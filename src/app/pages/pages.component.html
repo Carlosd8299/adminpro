@@ -1,0 +1,29 @@
+<div id="main-wrapper">
+    <app-header></app-header>
+    <app-sitebar></app-sitebar>
+    <div class="page-wrapper">
+        <div class="container-fluid">
+           <!-- breadcrums --> 
+           <app-breadcrums></app-breadcrums>
+            <!-- mi sistrema de rutas --> 
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <router-outlet></router-outlet>
+                            <!-- This is some text within a card block. -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">
+                © 2022 Admin Pro by wrappixel.com
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+    </div>
+</div>
