@@ -12,14 +12,14 @@ export class BreadcrumsComponent implements OnDestroy {
   public tituloSubs$: Subscription;
 
   constructor(private router: Router) {
-    this.tituloSubs$= this.getArgumentosRuta();
+    this.tituloSubs$ = this.getArgumentosRuta();
   }
   ngOnDestroy(): void {
-   this.tituloSubs$.unsubscribe();
+    this.tituloSubs$.unsubscribe();
   }
 
-  getArgumentosRuta(){
-   return this.router.events
+  getArgumentosRuta() {
+    return this.router.events
       .pipe(
         filter((value: any) => value instanceof ActivationEnd),
         filter((value: ActivationEnd) =>
