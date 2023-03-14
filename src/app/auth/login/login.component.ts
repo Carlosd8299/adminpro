@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
       localStorage.getItem('email') || '',
       [Validators.required, Validators.minLength(3), Validators.email],
     ],
-    password: ['', [Validators.required]],
-    remember: [false],
+    password: [localStorage.getItem('password'), [Validators.required]],
+    remember: [localStorage.getItem('remember')],
   });
 
   constructor(
@@ -36,6 +36,8 @@ export class LoginComponent implements OnInit {
       next: (exito) => {
         if (this.loginForm.get('remember')?.value) {
           localStorage.setItem('email', this.loginForm.get('email')?.value);
+          localStorage.setItem('password', this.loginForm.get('password')?.value);
+          localStorage.setItem('remember', this.loginForm.get('remember')?.value);
         } else {
           localStorage.removeItem('email');
         }
@@ -44,21 +46,5 @@ export class LoginComponent implements OnInit {
       error: (err) => Swal.fire('Error', err.error.msg, 'error'),
     });
   }
-  // onSuccess(googleUser: any) {
-  //   console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-  // }
-  // onFailure(error: any) {
-  //   console.log(error);
-  // }
-  // renderButton() {
-  //   gapi.signin2.render('my-signin2', {
-  //     scope: 'profile email',
-  //     width: 240,
-  //     height: 50,
-  //     longtitle: true,
-  //     theme: 'dark',
-  //     onsuccess: this.onSuccess,
-  //     onfailure: this.onFailure,
-  //   });
-  // }
+
 }
