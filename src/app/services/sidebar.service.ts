@@ -16,6 +16,16 @@ export class SidebarService {
         { titulo: 'Rxjs',url:'rxjs'}
       ]
     },
+    {
+      titulo: 'Mantenimientos',
+      icono:'mdi fa-fa-openbook',
+      submenu:[
+        { titulo: 'Usuarios',url:'usuarios'},
+        { titulo: 'Hospitales',url:'hospitales'},
+        { titulo: 'Medicos',url:'medicos'},
+
+      ]
+    },
   ];
 
   constructor() {}
