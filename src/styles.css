@@ -24,9 +24,11 @@
 
 .w100{
   width: 100px;
+  height: 100px;
 }
 .w160{
   width: 160px;
+  height: 160px;
 }
 .avatar{
   width: 60px;

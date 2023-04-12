@@ -4,6 +4,9 @@ import { AuthGuard } from '../guards/auth.guard';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Grafica1Component } from './grafica1/grafica1.component';
+import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
+import { MedicoComponent } from './mantenimientos/medicos/medico.component';
+import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
 import { PagesComponent } from './pages.component';
 import { PerfilComponent } from './perfil/perfil.component';
@@ -27,6 +30,9 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 
           // Mantenimiento
           { path: 'usuarios', component: UsuariosComponent, data:{titulo: 'Administracion de usuarios'} },
+          { path: 'hospitales', component: HospitalesComponent, data:{titulo: 'Administracion de hospitales'} },
+          { path: 'medicos', component: MedicosComponent, data:{titulo: 'Administracion de medicos'} },
+          { path: 'medico/:id', component: MedicoComponent, data:{titulo: 'Administracion de medicos'} },
         ],
       },
 ]
