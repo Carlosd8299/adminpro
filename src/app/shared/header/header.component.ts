@@ -14,15 +14,23 @@ export class HeaderComponent implements OnInit {
   public usuario!: Usuario;
 
   constructor(private usuarioService: UsuarioService,
-              private router: Router) {
-                this.usuario = usuarioService.usuario;
-              }
+    private router: Router) {
+    this.usuario = usuarioService.usuario;
+  }
+
+
 
   ngOnInit(): void {
   }
-  logOut(){
+  logOut() {
     this.usuarioService.logOut();
     this.router.navigateByUrl('/login');
+  }
+  buscar(word: string) {
+    if (word.length === 0)
+      this.router.navigateByUrl(`/dashboard`);
+
+    this.router.navigateByUrl(`/dashboard/buscar/${word}`);
   }
 
 }

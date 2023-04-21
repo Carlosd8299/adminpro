@@ -24,8 +24,14 @@ export class BusquedasService {
     const url = `${base_url}/busquedas/coleccion/${tipo}/${termino}`;
     return this.http.get(url, this.headers)
       .pipe(
-        map((resp:any) => resp.resultado)
+        map((resp: any) => resp.resultado)
       );
+  }
+  busquedaglobal(termino: string) {
+    const url = `${base_url}/busquedas/${termino}`;
+    return this.http.get<any>(url, this.headers).pipe(
+      map((resp: { medicos: any[], hospitales: any[], usuarios: any[] }) => resp)
+    )
   }
 }
 

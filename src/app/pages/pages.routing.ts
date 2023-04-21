@@ -13,6 +13,8 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { ProgressComponent } from './progress/progress.component';
 import { PromesaComponent } from './promesa/promesa.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { BusquedasComponent } from './busquedas/busquedas.component';
+import { AdminGuard } from '../guards/admin.guard';
 
  const routes: Routes = [
     {
@@ -27,9 +29,10 @@ import { RxjsComponent } from './rxjs/rxjs.component';
           { path: 'promesa', component: PromesaComponent, data:{titulo: 'Promesa'} },
           { path: 'rxjs', component: RxjsComponent, data:{titulo: 'Rxjs'} },
           { path: 'perfil', component: PerfilComponent, data:{titulo: 'Perfil'} },
+          { path: 'buscar/:termino', component: BusquedasComponent, data:{titulo: 'Busquedas'} },
 
           // Mantenimiento
-          { path: 'usuarios', component: UsuariosComponent, data:{titulo: 'Administracion de usuarios'} },
+          { path: 'usuarios',canActivate: [AdminGuard], component: UsuariosComponent, data:{titulo: 'Administracion de usuarios'} },
           { path: 'hospitales', component: HospitalesComponent, data:{titulo: 'Administracion de hospitales'} },
           { path: 'medicos', component: MedicosComponent, data:{titulo: 'Administracion de medicos'} },
           { path: 'medico/:id', component: MedicoComponent, data:{titulo: 'Administracion de medicos'} },

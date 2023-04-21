@@ -16,9 +16,19 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   logOut() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('token'); localStorage.removeItem('menu');
+    //TODO: Borrar Menu
+
   }
 
+  guardarLocalStorage(token: string, menu: any) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('menu', JSON.stringify(menu));
+  }
+
+  get role(): 'ADMIN_ROL'|'USER_ROL' {
+    return  this.usuario.rol!;
+  }
   get token() {
     return localStorage.getItem('token') || '';
   }
@@ -46,7 +56,9 @@ export class UsuarioService {
             email, nombre, rol, google, uid, password, img
           } = resp.usuario;
           this.usuario = new Usuario(nombre, email, '', google, rol, img, uid)
-          localStorage.setItem('token', resp.token);
+
+          this.guardarLocalStorage(resp.token, resp.menu);
+
           return true;
         }),
         catchError(error =>
@@ -58,24 +70,24 @@ export class UsuarioService {
   crearUsuario(formData: RegisterForm) {
     return this.http.post(`${base_url}/usuarios`, formData).pipe(
       tap((resp: any) => {
-        localStorage.setItem('token', resp.token);
+        this.guardarLocalStorage(resp.token, resp.menu);
       })
     );
   }
   // Se recomienda crear la nterfaz . Pero {} tambien se puede pedir datos
   actualizarPerfil(data: { email: string, nombre: string, rol: string }) {
-    data = {...data, rol: this.usuario.rol!}
+    data = { ...data, rol: this.usuario.rol! }
     return this.http.put(`${base_url}/usuarios/${this.uid}`, data, this.headers);
   }
 
-  actualizarUsuario(usuario: Usuario){
+  actualizarUsuario(usuario: Usuario) {
     return this.http.put(`${base_url}/usuarios/${this.uid}`, usuario, this.headers);
   }
 
   login(formData: Login) {
     return this.http.post(`${base_url}/login`, formData).pipe(
       tap((resp: any) => {
-        localStorage.setItem('token', resp.token.toString());
+        this.guardarLocalStorage(resp.token, resp.menu);
       })
     );
   }
