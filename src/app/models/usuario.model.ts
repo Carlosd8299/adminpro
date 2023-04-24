@@ -7,7 +7,7 @@ export class Usuario {
     public email: string,
     public password?: string,
     public google?: boolean,
-    public rol?: 'ADMIN_ROL'|'USER_ROL',
+    public rol?: 'ADMIN_ROLE'|'USER_ROLE',
     public img?: string,
     public uid?: string
   ) {}

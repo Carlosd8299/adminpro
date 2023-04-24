@@ -26,7 +26,7 @@ export class UsuarioService {
     localStorage.setItem('menu', JSON.stringify(menu));
   }
 
-  get role(): 'ADMIN_ROL'|'USER_ROL' {
+  get role(): 'ADMIN_ROLE'|'USER_ROLE' {
     return  this.usuario.rol!;
   }
   get token() {

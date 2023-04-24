@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  base_url: 'http://localhost:3000/api'
+  base_url: 'https://carlosdlcback.herokuapp.com/api'
 };
 // TODO: cambiar los enviroments en produccion
